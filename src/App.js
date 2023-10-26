@@ -7,11 +7,14 @@ import EmpData from "./Data/EmpData";
 
 function App() {
   const [emps, setEmps] = useState(EmpData);
-   
+
+  const handleAdd = (newEmp) => {
+    setEmps([...emps, {...newEmp, id: emps.length + 100 }]);
+  };
   return (
     <div className="App">
       <Header />
-      <Form />
+      <Form handleAdd={handleAdd} />
       <Table emps={emps} />
     </div>
   );
